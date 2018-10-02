@@ -6,8 +6,9 @@ components:
       git: git@github.com:ishansd94/python-api.git
       branch: master
     build:
-      - shell: sudo mkdir -p /build
-      - shell: sudo cp -rf ./* /build
-      - shell: sudo /usr/local/bin/fpm -s dir -n python-api --iteration $(date "+%Y%m%d%H%M%S") -t deb /build
+      - shell: sudo apt-get update
+      - shell: sudo mkdir -p /app
+      - shell: sudo cp -rf ./* /app
+      - shell: sudo /usr/local/bin/fpm -s dir -n python-api --iteration $(date "+%Y%m%d%H%M%S") -t deb /app
     artifacts:
       - location: "*.deb"

@@ -2,12 +2,12 @@ project: python-api
 applications:
   - name: python-api-app
     runtime: ubuntu-slim:16.04
-    version: "0.1"
+    version: "0.1.0"
     dependencies:
       - name: python-api-app
         type: debian-package
         origin:
           build: python-api-app
         version: 1.0
-    command: 
+    command: "/app/build/run.sh"
 
