@@ -1,0 +1,21 @@
+project: python-api
+environments:
+  - name: production
+    namespace: python-app-dev
+    deployment:
+      method: rolling-upgrade
+    services:
+      - name: python-app-service
+        external_url: python-app.prsn.io
+        port: 5000
+        replicas: 2
+        env: 
+          - name: FLASK_ENV
+            value: development
+          - name: FLASK_APP
+            value: /app/app/app.py
+    health_check:
+      command: 
+        - curl http://$(hostname)
+      initial_delay: 30
+      timeout: 10
