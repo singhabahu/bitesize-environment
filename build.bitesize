@@ -1,0 +1,13 @@
+project: python-api
+components:
+  - name: python-api-app
+    os: linux
+    repository:
+      git: git@github.com:ishansd94/python-api.git
+      branch: master
+    build:
+      - shell: sudo mkdir -p /build
+      - shell: sudo cp -rf ./* /build
+      - shell: sudo /usr/local/bin/fpm -s dir -n python-api --iteration $(date "+%Y%m%d%H%M%S") -t deb /build
+    artifacts:
+      - location: "*.deb"
